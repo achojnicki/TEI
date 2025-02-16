@@ -34,13 +34,12 @@ td {
 }
 
 </style>
-<table style="float: left;border-spacing: 0px;" background="https://s3.gifyu.com/images/bSx8M.gif">"""
+<table style="float: left;border-spacing: 0px;background-image: url('https://s3.gifyu.com/images/bSx8M.gif')">"""
 
 	def __init__(self):
 		self._img=Image.open(argv[1])
 		self._img=self._img.filter(ImageFilter.FIND_EDGES).convert('LA').convert('RGB')
 		#self._img=PIL.ImageOps.invert(self._img)
-		self._img.save('test.jpg')
 		self._bitmap=np.array(self._img)
 		self._output_file='data.html'
 		self._convert()
@@ -67,7 +66,7 @@ td {
 					self._data+=self.cod("")
 
 				else:
-					r=randint(220,255)
+					r=randint(150,255)
 					self._data+=self.cod_bgc(self.col(r,r,r))
 					#self._data+=self.cod("")
 			self._data+="</tr>"
