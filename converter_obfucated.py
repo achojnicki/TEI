@@ -7,7 +7,7 @@ from tqdm import tqdm
 from random import choice, randint
 
 
-COLOR_TEMPLATE=""".<_ident_> {background: <_color_>;} """
+COLOR_TEMPLATE=""".<_ident_>{background:<_color_>}"""
 
 
 class converter:
@@ -28,9 +28,9 @@ class converter:
 		
 
 
-		self._style="""body {display: block;} .<_table_class_> {margin: 0px; padding: 0px; border-spacing: 0px;} .<_tr_class_> {margin: 0px;padding: 0px;} .<_td_class_> {width: 1px;height: 1px;margin: 0px;padding: 0px;}.<_hidden_class_> {display: none;}""".replace('<_table_class_>', self._table_class).replace('<_tr_class_>',self._tr_class).replace('<_td_class_>', self._td_class).replace("<_hidden_class_>", self._hidden_class)
+		self._style="""body{display: block;}.<_table_class_> {margin: 0px; padding: 0px; border-spacing: 0px;}.<_tr_class_>{margin: 0px;padding: 0px;}.<_td_class_>{width: 1px;height: 1px;margin: 0px;padding: 0px;}.<_hidden_class_>{display: none;}""".replace('<_table_class_>', self._table_class).replace('<_tr_class_>',self._tr_class).replace('<_td_class_>', self._td_class).replace("<_hidden_class_>", self._hidden_class)
 
-		self._table="""<table id="table" class="<_table_class_>">""".replace("<_table_class_>", self._table_class)
+		self._table="""<table class="<_table_class_>">""".replace("<_table_class_>", self._table_class)
 
 		self._data="""<html><head><style><_style_></style></head><body><_table_></body></html>"""
 
@@ -47,7 +47,7 @@ class converter:
 
 	def _seed(self):	
 		ident=""
-		for a in range(12):
+		for a in range(5):
 			ident+=chr(randint(97, 122))
 		return ident
 
@@ -69,6 +69,7 @@ class converter:
 		for c in classes:
 			cl+=c+" "
 
+		cl=cl[0:len(cl)-1]
 		return f"""<td class="{cl}"></td>"""
 
 

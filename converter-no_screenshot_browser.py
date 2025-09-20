@@ -38,7 +38,7 @@ td {
 
 	def __init__(self):
 		self._img=Image.open(argv[1])
-		self._img=self._img.filter(ImageFilter.FIND_EDGES).convert('LA').convert('RGB')
+		#self._img=self._img.filter(ImageFilter.FIND_EDGES).convert('LA').convert('RGB')
 		#self._img=PIL.ImageOps.invert(self._img)
 		self._bitmap=np.array(self._img)
 		self._output_file='data.html'
@@ -61,12 +61,12 @@ td {
 		for x in tqdm(range(0,self._img.size[1], 1)):
 			self._data+="<tr>"
 			for y in range(0,self._img.size[0], 1):
-				if self._bitmap[x][y][0]<100 and self._bitmap[x][y][1]<100 and self._bitmap[x][y][2]<100:	
+				if self._bitmap[x][y][0]<20 and self._bitmap[x][y][1]<20 and self._bitmap[x][y][2]<20:	
 					#self._data+=self.cod_bgc(self.col(19,122,127))
 					self._data+=self.cod("")
 
 				else:
-					r=randint(150,255)
+					r=randint(0,255)
 					self._data+=self.cod_bgc(self.col(r,r,r))
 					#self._data+=self.cod("")
 			self._data+="</tr>"

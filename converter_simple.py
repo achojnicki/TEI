@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+ #!/usr/bin/env python3
 
 import numpy as np
 from PIL import Image
@@ -44,7 +44,7 @@ td {
 
 
 	def cod(self,col):
-		return f"""<td style="background-color: {col}"></td>"""
+		return f"""<td style="background: {col}"></td>"""
 
 
 	def col(self,r,g,b):
