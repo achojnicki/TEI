@@ -7,33 +7,33 @@ import numpy as np
 
 class SanKyu:
 	def __init__(self):
-		self._width=500
-		self._height=500
+		self._width=800
+		self._height=300
 		self._font=ImageFont.truetype('comicbd.ttf', 300)
 
 	def _generate_shape(self):
 		img=Image.new(mode="RGBA", size=(self._width, self._height), color='black')
 		draw=ImageDraw.Draw(img)
-		draw.text((40,40), "39", font=self._font, fill="white")
+		draw.text((10,10), "3939", font=self._font, fill="white")
 
 		self._shape=np.array(img)
 		self._shape_values=self._generate_noise_array(self._width, self._height)
 
 	def _generate_noise_array(self, x,y):
 		data=[]
-		for _x in range(0, x):
+		for _y in range(0, y):
 			data.append([])
-			for _y in range(0, y):
+			for _x in range(0, x):
 				r=randint(0,255)
-				data[_x].append([r,r,r])
+				data[_y].append([r,r,r])
 
 		data=np.array(data, dtype=np.uint8)
 		data.reshape(x,y,3)
 		return data
 
 	def _apply_shape(self, frame):
-		for x in tqdm(range(0,self._width, 1)):
-			for y in range(0,self._height, 1):
+		for y in tqdm(range(0,self._width, 1)):
+			for x in range(0,self._height, 1):
 				if self._shape[x][y][0]<20 and self._shape[x][y][1]<20 and self._shape[x][y][2]<20:
 					frame[x][y][0]=self._shape_values[x][y][0]
 					frame[x][y][1]=self._shape_values[x][y][1]
