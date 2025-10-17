@@ -68,10 +68,10 @@ class SanKyu:
 
 		base_image = self._generate_frame()
 		frames=[]
-		for frame in range(5):
+		for frame in range(10):
 			frames.append(self._generate_frame())
 
-		base_image.save("39.gif", save_all=True, append_images=frames, duration=50, loop=0)
+		base_image.save("39.gif", save_all=True, append_images=frames, duration=50, loop=2)
 
 
 if __name__=="__main__":
